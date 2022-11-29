@@ -18,69 +18,25 @@ public class Instruction {
     }
 
     private void findCommand(String ins) {
-        String opcode = ins.substring(0, 11);
         String name = "";
         formats type = formats.NONE;
 
 
         while(type == formats.NONE) {
             try {
-                // checks all 11 bit opcodes
-                if (opcode.length() == 11) {
-                    switch (opcode) {
-                        //ADD
-                        case "10001011000":
-                            type = formats.READ;
-                            name = "add";
-                            break;
-
-                        //AND
-                        case "10001010000":
-                            type = formats.READ;
-                            name = "and";
-                            break;
-
-                        default:
-                            //removes a bit
-                            opcode = opcode.substring(0, 10);
-                            break;
-
-                    }
+                //ADD
+                if(ins.indexOf("10001011000") == 0){
+                    type = formats.READ;
+                    name = "add";
                 }
 
-                //Opcode length 10
-                else if (opcode.length() == 10) {
-                    switch(opcode) {
-                        default:
-                            opcode = opcode.substring(0, 9);
-                            break;
-                    }
+                //AND
+                else if(ins.indexOf("10001010000") == 0) {
+                    type = formats.READ;
+                    name = "and";
                 }
-
-                //Opcode length 8
-                else if (opcode.length() == 8) {
-                    switch(opcode) {
-                        default:
-                            opcode = opcode.substring(0, 7);
-                            break;
-                    }
-                }
-
-                else if(opcode.length() == 6) {
-                    switch(opcode) {
-                        default:
-                            type = formats.UNFOUND;
-                            throw new RuntimeException();
-                            break;
-                    }
-                }
-
-                else if(opcode.length() > 6) {
-                    opcode = opcode.substring(0, opcode.length() - 1);
-                }
-
+                
                 //Opcode not found
-                //SHOULD NOT BE IN OUR LIST OF INSTRUCTS
                 //TODO is this needed?
                 else{
                     type = formats.UNFOUND;
