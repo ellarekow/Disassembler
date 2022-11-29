@@ -34,7 +34,6 @@ public class readObject {
     }
 
     private void generateInstuction() {
-
-        instruct = name.toUpperCase();
+        instruct.substring(0, 11);
     }
 }
