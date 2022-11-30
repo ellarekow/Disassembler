@@ -6,8 +6,10 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Please enter a binary instruction");
-        String instruction = input.nextLine();
+//        System.out.println("Please enter a binary instruction");
+//        String instruction = input.nextLine();
+
+        String instruction = "10001011000000000000000000000000";
 
         Instruction result = new Instruction(instruction);
 

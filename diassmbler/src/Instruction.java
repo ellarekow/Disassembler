@@ -35,7 +35,7 @@ public class Instruction {
                     type = formats.READ;
                     name = "and";
                 }
-                
+
                 //Opcode not found
                 //TODO is this needed?
                 else{
@@ -51,6 +51,7 @@ public class Instruction {
         //creates a Read Instuction
         if (type == formats.READ) {
             readObject object = new readObject(name, ins);
+            command = object.getInstruct();
         }
 
         else if(type == formats.IMMEDIATE) {
